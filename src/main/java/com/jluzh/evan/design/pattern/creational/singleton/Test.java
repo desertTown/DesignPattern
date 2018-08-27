@@ -7,11 +7,11 @@ import java.lang.reflect.InvocationTargetException;
 public class Test {
     public static void main(String[] args) throws IOException, ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
 //        LazySingleton lazySingleton = LazySingleton.getInstance();
-//        Thread t1 = new Thread(new T());
-//        Thread t2 = new Thread(new T());
-//        t1.start();
-//        t2.start();
-//        System.out.println("program end");
+        Thread t1 = new Thread(new T());
+        Thread t2 = new Thread(new T());
+        t1.start();
+        t2.start();
+        System.out.println("program end");
 
         // 序列化反序列化导致单例破坏
 //        HungrySingleton instance = HungrySingleton.getInstance();
@@ -49,28 +49,28 @@ public class Test {
 //        System.out.println(instance == newInstance);
 
         // 枚举类 单例
-        EnumInstance instance = EnumInstance.getInstance();
-        instance.setData(new Object());
-        ObjectOutputStream oos = null;
-        ObjectInputStream ois = null;
-        try {
-            oos = new ObjectOutputStream(new FileOutputStream("single_file"));
-            oos.writeObject(instance);
-            ois = new ObjectInputStream(new FileInputStream("single_file"));
-
-            EnumInstance newInstance = (EnumInstance) ois.readObject();
-
-            System.out.println(instance.getData());
-            System.out.println(newInstance.getData());
-            System.out.println(instance.getData() == newInstance.getData());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            ois.close();
-            oos.close();
-        }
-
-        EnumInstance instance1  = EnumInstance.getInstance();
-        instance1.printTest();
+//        EnumInstance instance = EnumInstance.getInstance();
+//        instance.setData(new Object());
+//        ObjectOutputStream oos = null;
+//        ObjectInputStream ois = null;
+//        try {
+//            oos = new ObjectOutputStream(new FileOutputStream("single_file"));
+//            oos.writeObject(instance);
+//            ois = new ObjectInputStream(new FileInputStream("single_file"));
+//
+//            EnumInstance newInstance = (EnumInstance) ois.readObject();
+//
+//            System.out.println(instance.getData());
+//            System.out.println(newInstance.getData());
+//            System.out.println(instance.getData() == newInstance.getData());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } finally {
+//            ois.close();
+//            oos.close();
+//        }
+//
+//        EnumInstance instance1  = EnumInstance.getInstance();
+//        instance1.printTest();
     }
 }
