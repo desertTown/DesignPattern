@@ -35,20 +35,42 @@ public class Test {
 //        }
         // 反射调用
 //        Class objectClass = HungrySingleton.class;
-        Class objectClass = LazySingleton.class;
-
-        Constructor constructor = objectClass.getDeclaredConstructor();
-        constructor.setAccessible(true);
+//        Class objectClass = LazySingleton.class;
+//
+//        Constructor constructor = objectClass.getDeclaredConstructor();
+//        constructor.setAccessible(true);
 //        HungrySingleton instance = HungrySingleton.getInstance();
 //        HungrySingleton newInstance = (HungrySingleton) constructor.newInstance();
-        LazySingleton instance = LazySingleton.getInstance();
-        LazySingleton newInstance = (LazySingleton) constructor.newInstance();
+//        LazySingleton instance = LazySingleton.getInstance();
+//        LazySingleton newInstance = (LazySingleton) constructor.newInstance();
+//
+//        System.out.println(instance);
+//        System.out.println(newInstance);
+//        System.out.println(instance == newInstance);
 
-        System.out.println(instance);
-        System.out.println(newInstance);
-        System.out.println(instance == newInstance);
+        // 枚举类 单例
+        EnumInstance instance = EnumInstance.getInstance();
+        instance.setData(new Object());
+        ObjectOutputStream oos = null;
+        ObjectInputStream ois = null;
+        try {
+            oos = new ObjectOutputStream(new FileOutputStream("single_file"));
+            oos.writeObject(instance);
+            ois = new ObjectInputStream(new FileInputStream("single_file"));
 
+            EnumInstance newInstance = (EnumInstance) ois.readObject();
 
+            System.out.println(instance.getData());
+            System.out.println(newInstance.getData());
+            System.out.println(instance.getData() == newInstance.getData());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            ois.close();
+            oos.close();
+        }
 
+        EnumInstance instance1  = EnumInstance.getInstance();
+        instance1.printTest();
     }
 }
