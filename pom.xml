@@ -7,6 +7,11 @@
     <groupId>com.jluzh.evan.design.pattern</groupId>
     <artifactId>DesignPattern</artifactId>
     <version>1.0.0</version>
+
+    <properties>
+        <org.springframework.version>4.0.3.RELEASE</org.springframework.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>commons-io</groupId>
@@ -20,6 +25,30 @@
             <version>2.6</version>
         </dependency>
 
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
     </dependencies>
 
 </project>
