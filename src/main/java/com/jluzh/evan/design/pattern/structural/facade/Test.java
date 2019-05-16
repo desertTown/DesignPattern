@@ -1,13 +1,10 @@
 package com.jluzh.evan.design.pattern.structural.facade;
 
-/**
- * Created by geely
- */
+
 public class Test {
     public static void main(String[] args) {
-        Computer computer = new Computer();
-        computer.open();
-        System.out.println("玩一会电脑");
-        computer.close();
+        PointsGift pointsGift = new PointsGift("T恤");
+        GiftExchangeService giftExchangeService = new GiftExchangeService();
+        giftExchangeService.giftExchange(pointsGift);
     }
 }
